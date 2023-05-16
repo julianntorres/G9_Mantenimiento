@@ -36,7 +36,8 @@ public class GraficosCtr implements ActionListener {
     public int id_labo = -1;
     public Timestamp mod = null;
     public String obs = null;
-
+    public int numero1;
+    
     public GraficosCtr() {
         graficosui = new Graficos();
         graficosui.botonGraficos.addActionListener(this);
@@ -47,6 +48,10 @@ public class GraficosCtr implements ActionListener {
         model.addColumn("Id Laboratorio");
         model.addColumn("Fecha de Modificación");
         model.addColumn("Observación");
+        numero1 = Integer.parseInt( JOptionPane.showInputDialog(
+                null,"¿De qué año desea obtener data?",
+                "Filtrado de información - años",
+                JOptionPane.QUESTION_MESSAGE) );
     }
 
     public GraficosCtr(UserSession userSession) {
@@ -72,7 +77,7 @@ public class GraficosCtr implements ActionListener {
             try {
                 List<Map<String, Object>> resultList = new ArrayList<>();
                 String sql = String.format(
-                        "select id_pc, estado, id_lab, fecha_mod, obs from computer");
+                        "select id_pc, estado, id_lab, fecha_mod,obs from computer where YEAR(fecha_mod) = " + numero1);
                 //System.out.println(sql);
 
                 try {
