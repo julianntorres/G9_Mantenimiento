@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class PrintReportCtr implements ActionListener {
     PrintReport printnui;
@@ -62,6 +63,8 @@ public class PrintReportCtr implements ActionListener {
                 new ConnectionPool().makeUpdate(sqlAudit);
             } catch (SQLException ex) {
                 System.out.println(ex);
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al generar el reporte"
+                    + ", intente nuevamente", "Mensaje del sistema", 0);
             }
         }
     }

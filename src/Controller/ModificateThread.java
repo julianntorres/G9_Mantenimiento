@@ -42,6 +42,8 @@ public class ModificateThread extends Thread {
 
                 } catch (SQLException ex) {
                     System.out.println(ex);
+                    JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el usuario"
+                    + ", intente nuevamente", "Mensaje del sistema", 0);
                 }
                 JOptionPane.showMessageDialog(null, "Usuario con id: "+this.id+" actualizado con exito");
                 
@@ -56,6 +58,8 @@ public class ModificateThread extends Thread {
 
                 } catch (SQLException ex) {
                     System.out.println(ex);
+                    JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el usuario"
+                    + ", intente nuevamente", "Mensaje del sistema", 0);
                 }
                 JOptionPane.showMessageDialog(null, "Usuario con id: "+this.id+" actualizado con exito");
                 

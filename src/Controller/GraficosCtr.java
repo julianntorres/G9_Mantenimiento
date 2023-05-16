@@ -94,7 +94,8 @@ public class GraficosCtr implements ActionListener {
                     }
                 } catch (SQLException ex) {
                     System.err.println("Error al llenar tabla" + ex);
-                    JOptionPane.showMessageDialog(null, "Error al mostrar información. Contactar al administrador");
+                    JOptionPane.showMessageDialog(null, "Ocurrio un error al mostrar la información"
+                    + ", intente nuevamente", "Mensaje del sistema", 0);
                     //System.out.println(ex);
                 }
 

@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import Connection.ConnectionPool;
 import Model.UserSession;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,6 +48,7 @@ public class RegisterCtr implements ActionListener {
                     System.out.println("hola soy un admin validado");
                     String sql = String.format("INSERT INTO `admins`(`name_admin`, `ap_admin`, `pass_admin`) VALUES ('%s','%s','%s')", nombre, apellido, pass);
                     System.out.println(sql);
+                    JOptionPane.showMessageDialog(null, "Administrador registrado con exito", "Mensaje del sistema", 1);
                     try {
                         new ConnectionPool().makeUpdate(sql);
 
@@ -62,6 +64,7 @@ public class RegisterCtr implements ActionListener {
                 if (permisos_string.equalsIgnoreCase("Trabajador")) {
                     System.out.println("hola soy un trabajador validado");
                     String sql = String.format("INSERT INTO `users`(`name_user`, `ap_user`, `pass_user`) VALUES ('%s','%s','%s')", nombre, apellido, pass);
+                    JOptionPane.showMessageDialog(null, "Trabajador registrado con exito", "Mensaje del sistema", 1);
                     try {
                         new ConnectionPool().makeUpdate(sql);
 
@@ -103,6 +106,7 @@ public class RegisterCtr implements ActionListener {
             new ConnectionPool().makeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al auditar el usuario", "Mensaje del sistema", 0);
         }
 }
 }

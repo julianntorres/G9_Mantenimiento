@@ -122,6 +122,8 @@ public class ModificarCompCtr implements ActionListener{
             }
         } catch (SQLException e) {
             System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al recuperar los datos"
+                    + ", intente nuevamente", "Mensaje del sistema", 0);
         }
     }
     
@@ -188,6 +190,8 @@ public class ModificarCompCtr implements ActionListener{
             JOptionPane.showMessageDialog(null, "Computadora con id: "+comp+" actualizado con exito");
         } catch (SQLException e) {
             System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar la computadora"
+                    + ", intente nuevamente", "Mensaje del sistema", 0);
         }
         //System.out.println(sql);
     }

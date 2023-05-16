@@ -71,6 +71,8 @@ public class WriterThread extends Thread{
 
         }catch(Exception exc){
             System.out.println(exc);
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al generar el informe"
+                    + ", intente nuevamente", "Mensaje del sistema", 0);
         }
         System.out.println( "Tiempo: " + (System.currentTimeMillis() - s) + " ms. "  );
     }

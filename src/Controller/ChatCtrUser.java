@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +40,8 @@ public class ChatCtrUser extends Thread
 
          }catch(Exception e){
              System.out.println(e);
+             JOptionPane.showMessageDialog(null, "Ocurrio un error al crear la sala de chat", 
+                    "Mensaje del sistema", 0);
          };
      }
     public void parar() {
@@ -64,6 +67,8 @@ public class ChatCtrUser extends Thread
             salida.writeUTF(msg+"\n");
         }catch(IOException e){
             System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al enviar el mensaje"
+                    + ", intente nuevamente", "Mensaje del sistema", 0);
         };
      }
    
