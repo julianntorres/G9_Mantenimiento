@@ -2,6 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Principal/Admin.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Principal/ServidorRMI1.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Interface/admin_menu.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Controller/RegisterCtr.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Controller/ModificarCompCtrTest.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Connection/ConnectionPool.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Interface/Login.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Controller/ModificarCompCtr.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Controller/RegistrarUCtr.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Interface/RegisterUser.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Controller/LoginCtr.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Principal/User.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Controller/UserReadFileCtr.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Interface/user_menu.java</file>
+            <file>file:/C:/Users/julia/Downloads/Mantenimiento/PPC-G5-master/PPC-G5-master/G9_Mantenimiento/src/Interface/ModificarComp.java</file>
+        </group>
     </open-files>
 </project-private>
