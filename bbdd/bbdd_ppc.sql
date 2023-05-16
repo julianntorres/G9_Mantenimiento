@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `g5-ppc_db`.`admins` (
   PRIMARY KEY (`id_admin`))
 ENGINE = InnoDB;
 
-
+select * from users;
 -- -----------------------------------------------------
 -- Table `g5-ppc_db`.`users`
 -- -----------------------------------------------------
@@ -141,3 +141,39 @@ INSERT INTO `g5-ppc_db`.`computer` (`id_pc`, `estado`, `id_lab`, `fecha_mod`, `o
 
 COMMIT;
 
+
+
+CREATE INDEX `user_audit_idx` ON `g5-ppc_db`.`audit` (`id_user` ASC) VISIBLE;
+CREATE TABLE IF NOT EXISTS `g5-ppc_db`.`current_user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NULL,
+  `user_type` VARCHAR(45) NULL,
+  `last_login` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+
+
+CREATE TABLE IF NOT EXISTS `g5-ppc_db`.`audit_admin` (
+  `id_audit` INT NOT NULL AUTO_INCREMENT,
+  `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_admin` INT NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id_audit`),
+  CONSTRAINT `admin_audit`
+    FOREIGN KEY (`id_admin`)
+    REFERENCES `g5-ppc_db`.`admins` (`id_admin`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+CREATE TABLE IF NOT EXISTS `g5-ppc_db`.`audit_user` (
+  `id_audit` INT NOT NULL AUTO_INCREMENT,
+  `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_user` INT NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id_audit`),
+  CONSTRAINT `user_auditt`
+    FOREIGN KEY (`id_user`)
+    REFERENCES `g5-ppc_db`.`users` (`id_user`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
