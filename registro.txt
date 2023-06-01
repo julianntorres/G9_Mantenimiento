@@ -8,3 +8,4 @@ Alma , PC: 3, Estado: defectuosa, Observaciones: test, Lab: 3
 Alma , PC: 9, Estado: mantenimiento, Observaciones: test, Lab: 4
 Alma , PC: 1, Estado: operativo, Observaciones: jeje, Lab: 5
 Hermi, PC: 5, Estado: operativo, Observaciones: test, Lab: 3
+Alma , PC: 3, Estado: mantenimiento, Observaciones: werwe, Lab: 1

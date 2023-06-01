@@ -183,40 +183,57 @@ public class ModificarCompCtrTest implements ActionListener {
 
     private void sendModComp() {
         String lab, comp, estado, obs;
+
         comp = String.valueOf(modificarui.cmb_comId.getSelectedItem());
         estado = String.valueOf(modificarui.cmb_estado.getSelectedItem());
-        if (this.modificarui.do_obs.isSelected()) {
-            obs = modificarui.obs.getText();
-        } else {
-            obs = String.valueOf(this.selectedComp.get("obs"));
-        }
-        if (this.modificarui.do_modLab.isSelected() && !String.valueOf(modificarui.cmb_newLabId.getSelectedItem()).isEmpty()) {
-            lab = String.valueOf(modificarui.cmb_newLabId.getSelectedItem());
-        } else {
-            lab = String.valueOf(this.selectedComp.get("id_lab"));
-        }
+        obs = getObservation();
+        lab = getLab();
 
-        // se añade la conexion al servidor RMI
+        updateComputer(lab, comp, estado, obs);
+    }
+
+    private String getObservation() {
+        if (this.modificarui.do_obs.isSelected()) {
+            return modificarui.obs.getText();
+        } else {
+            return String.valueOf(this.selectedComp.get("obs"));
+        }
+    }
+
+    private String getLab() {
+        if (this.modificarui.do_modLab.isSelected() && !String.valueOf(modificarui.cmb_newLabId.getSelectedItem()).isEmpty()) {
+            return String.valueOf(modificarui.cmb_newLabId.getSelectedItem());
+        } else {
+            return String.valueOf(this.selectedComp.get("id_lab"));
+        }
+    }
+
+    private void updateComputer(String lab, String comp, String estado, String obs) {
         try {
             Registry registro = LocateRegistry.getRegistry("127.0.0.1", 7777);
             RMI interfaz = (RMI) registro.lookup("RemotoRMI");
 
             boolean respuesta = interfaz.modificarPc(lab, comp, estado, obs, usuario.getName_user());
 
-            if (respuesta) {
-                JOptionPane.showMessageDialog(null, "Se actualizó correctamente la PC");
-                String sqlAudit = String.format("INSERT INTO `audit_user`(`id_user`, `description`) VALUES ('%d','%s')", usuario.getId_user(), "Modificación de computadora: " + comp + ", " + estado + ", " + obs);
-                try {
-                    new ConnectionPool().makeUpdate(sqlAudit);
-                } catch (SQLException ex) {
-                    System.out.println(ex);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo actualizar correctamente la PC");
-            }
+            handleResponse(respuesta, comp, estado, obs);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+
+    private void handleResponse(boolean respuesta, String comp, String estado, String obs) {
+        if (respuesta) {
+            JOptionPane.showMessageDialog(null, "Se actualizó correctamente la PC");
+            String sqlAudit = String.format("INSERT INTO `audit_user`(`id_user`, `description`) VALUES ('%d','%s')", usuario.getId_user(), "Modificación de computadora: " + comp + ", " + estado + ", " + obs);
+            try {
+                new ConnectionPool().makeUpdate(sqlAudit);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar correctamente la PC");
+        }
+    }
+
 }
