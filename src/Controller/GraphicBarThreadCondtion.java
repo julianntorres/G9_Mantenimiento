@@ -34,149 +34,95 @@ public class GraphicBarThreadCondtion extends Thread{
         this.operativo = 0 ;
         
     }
+    
+    private void asignarValores(int[]labo_Operativo, int[]labo_Defectuoso, int []labo_Mantenimiento){
+        for (int i=0;i<datos.size();i++){
+            int opcion =  Integer.parseInt(datos.get(i).get("id_lab").toString());
+            switch (datos.get(i).get("estado").toString()) {
+                        case "operativo":
+                            labo_Operativo[opcion-1]++;
+                            break;
+                        case "defectuosa":
+                            labo_Defectuoso[opcion-1]++;
+                            break;
+                        default:
+                            labo_Mantenimiento[opcion-1]++;
+                            break;
+                    }
+        }
+    }
+    private void almacenarDatos(DefaultCategoryDataset datos, int[]labo_Operativo, int[]labo_Defectuoso, int []labo_Mantenimiento){
+        datos.setValue(labo_Operativo[0],"PC operativa","Laboratorio 1");
+        datos.setValue(labo_Defectuoso[0],"PC defectuosa","Laboratorio 1");
+        datos.setValue(labo_Mantenimiento[0],"PC en mantenimiento","Laboratorio 1");
+        datos.setValue(labo_Operativo[1],"PC operativa","Laboratorio 2");
+        datos.setValue(labo_Defectuoso[1],"PC defectuosa","Laboratorio 2");
+        datos.setValue(labo_Mantenimiento[1],"PC en mantenimiento","Laboratorio 2");
+        datos.setValue(labo_Operativo[2],"PC operativa","Laboratorio 3");
+        datos.setValue(labo_Defectuoso[2],"PC defectuosa","Laboratorio 3");
+        datos.setValue(labo_Mantenimiento[2],"PC en mantenimiento","Laboratorio 3");
+        datos.setValue(labo_Operativo[3],"PC operativa","Laboratorio 4");
+        datos.setValue(labo_Defectuoso[3],"PC defectuosa","Laboratorio 4");
+        datos.setValue(labo_Mantenimiento[3],"PC en mantenimiento","Laboratorio 4");
+        datos.setValue(labo_Operativo[4],"PC operativa","Laboratorio 5");
+        datos.setValue(labo_Defectuoso[4],"PC defectuosa","Laboratorio 5");
+        datos.setValue(labo_Mantenimiento[4],"PC en mantenimiento","Laboratorio 5");
+        datos.setValue(labo_Operativo[5],"PC operativa","Laboratorio 6");
+        datos.setValue(labo_Defectuoso[5],"PC defectuosa","Laboratorio 6");
+        datos.setValue(labo_Mantenimiento[5],"PC en mantenimiento","Laboratorio 6");
+        datos.setValue(labo_Operativo[6],"PC operativa","Laboratorio 7");
+        datos.setValue(labo_Defectuoso[6],"PC defectuosa","Laboratorio 7");
+        datos.setValue(labo_Mantenimiento[6],"PC en mantenimiento","Laboratorio 7");
+    }
+    
     @Override
     public void run(){
         // ver cuanto tiempo demora en ejecutarse el hilo
         long tiempoInicial = System.currentTimeMillis();
-        int labo_1Operativo = 0;
-        int labo_2Operativo = 0;
-        int labo_3Operativo = 0;
-        int labo_4Operativo = 0;
-        int labo_5Operativo = 0;
-        int labo_6Operativo = 0;
-        int labo_7Operativo = 0;
-        int labo_1Defectuoso = 0;
-        int labo_2Defectuoso = 0;
-        int labo_3Defectuoso = 0;
-        int labo_4Defectuoso = 0;
-        int labo_5Defectuoso = 0;
-        int labo_6Defectuoso = 0;
-        int labo_7Defectuoso = 0;
-        int labo_1Mantenimiento = 0;
-        int labo_2Mantenimiento = 0;
-        int labo_3Mantenimiento = 0;
-        int labo_4Mantenimiento = 0;
-        int labo_5Mantenimiento = 0;
-        int labo_6Mantenimiento = 0;
-        int labo_7Mantenimiento = 0;
-        for (int i=0;i<datos.size();i++){
+        int[] labo_Operativo = new int[7];
+
+        int[] labo_Defectuoso = new int[7];
+
+        int[] labo_Mantenimiento= new int[7];
+        
+        asignarValores(labo_Operativo,labo_Defectuoso,labo_Mantenimiento);
+        /*for (int i=0;i<datos.size();i++){
+            int opcion =  Integer.parseInt(datos.get(i).get("id_lab").toString());
+            switch (datos.get(i).get("estado").toString()) {
+                        case "operativo":
+                            labo_Operativo[opcion-1]++;
+                            break;
+                        case "defectuosa":
+                            labo_Defectuoso[opcion-1]++;
+                            break;
+                        default:
+                            labo_Mantenimiento[opcion-1]++;
+                            break;
+                    }
+        }*/
+        
+        /*for (int i=0;i<datos.size();i++){
             switch (datos.get(i).get("id_lab").toString()) {
                 case "1":
                     switch (datos.get(i).get("estado").toString()) {
                         case "operativo":
-                            labo_1Operativo++;
+                            labo_Operativo[0]++;
                             break;
                         case "defectuosa":
-                            labo_1Defectuoso++;
+                            labo_Defectuoso[0]++;
                             break;
                         default:
-                            labo_1Mantenimiento++;
+                            labo_Mantenimiento[0]++;
                             break;
                     }
-                    break;
-                case "2":
-                    switch (datos.get(i).get("estado").toString()) {
-                        case "operativo":
-                            labo_2Operativo++;
-                            break;
-                        case "defectuosa":
-                            labo_2Defectuoso++;
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-                case "3":
-                    switch (datos.get(i).get("estado").toString()) {
-                        case "operativo":
-                            labo_3Operativo++;
-                            break;
-                        case "defectuosa":
-                            labo_3Defectuoso++;
-                            break;
-                        default:
-                            labo_3Mantenimiento++;
-                            break;
-                    }
-                    break;
-                case "4":
-                    switch (datos.get(i).get("estado").toString()) {
-                        case "operativo":
-                            labo_4Operativo++;
-                            break;
-                        case "defectuosa":
-                            labo_4Defectuoso++;
-                            break;
-                        default:
-                            labo_4Mantenimiento++;
-                            break;
-                    }
-                    break;
-                case "5":
-                    switch (datos.get(i).get("estado").toString()) {
-                        case "operativo":
-                            labo_5Operativo++;
-                            break;
-                        case "defectuosa":
-                            labo_5Defectuoso++;
-                            break;
-                        default:
-                            labo_5Mantenimiento++;
-                            break;
-                    }
-                    break;
-                case "6":
-                    switch (datos.get(i).get("estado").toString()) {
-                        case "operativo":
-                            labo_6Operativo++;
-                            break;
-                        case "defectuosa":
-                            labo_6Defectuoso++;
-                            break;
-                        default:
-                            labo_6Mantenimiento++;
-                            break;
-                    }
-                    break;
-                case "7":
-                    switch (datos.get(i).get("estado").toString()) {
-                        case "operativo":
-                            labo_7Operativo++;
-                            break;
-                        case "defectuosa":
-                            labo_7Defectuoso++;
-                            break;
-                        default:
-                            labo_7Mantenimiento++;
-                            break;
-                    }
-                    break;                    
-            }
+         
             
 
-        }
+        }*/
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
-        datos.setValue(labo_1Operativo,"PC operativa","Laboratorio 1");
-        datos.setValue(labo_1Defectuoso,"PC defectuosa","Laboratorio 1");
-        datos.setValue(labo_1Mantenimiento,"PC en mantenimiento","Laboratorio 1");
-        datos.setValue(labo_2Operativo,"PC operativa","Laboratorio 2");
-        datos.setValue(labo_2Defectuoso,"PC defectuosa","Laboratorio 2");
-        datos.setValue(labo_2Mantenimiento,"PC en mantenimiento","Laboratorio 2");
-        datos.setValue(labo_3Operativo,"PC operativa","Laboratorio 3");
-        datos.setValue(labo_3Defectuoso,"PC defectuosa","Laboratorio 3");
-        datos.setValue(labo_3Mantenimiento,"PC en mantenimiento","Laboratorio 3");
-        datos.setValue(labo_4Operativo,"PC operativa","Laboratorio 4");
-        datos.setValue(labo_4Defectuoso,"PC defectuosa","Laboratorio 4");
-        datos.setValue(labo_4Mantenimiento,"PC en mantenimiento","Laboratorio 4");
-        datos.setValue(labo_5Operativo,"PC operativa","Laboratorio 5");
-        datos.setValue(labo_5Defectuoso,"PC defectuosa","Laboratorio 5");
-        datos.setValue(labo_5Mantenimiento,"PC en mantenimiento","Laboratorio 5");
-        datos.setValue(labo_6Operativo,"PC operativa","Laboratorio 6");
-        datos.setValue(labo_6Defectuoso,"PC defectuosa","Laboratorio 6");
-        datos.setValue(labo_6Mantenimiento,"PC en mantenimiento","Laboratorio 6");
-        datos.setValue(labo_7Operativo,"PC operativa","Laboratorio 7");
-        datos.setValue(labo_7Defectuoso,"PC defectuosa","Laboratorio 7");
-        datos.setValue(labo_7Mantenimiento,"PC en mantenimiento","Laboratorio 7");
+      
+        almacenarDatos(datos,labo_Operativo,labo_Defectuoso,labo_Mantenimiento);
+        
         JFreeChart grafico_barras = ChartFactory.createBarChart3D("Estado de las PC por laboratorio", 
                 "Laboratorio", 
                 "Cantidad", datos, 
@@ -198,8 +144,8 @@ public class GraphicBarThreadCondtion extends Thread{
         
     }
     
-    public void sumarLabo(){
-        
-    }
+//    public void sumarLabo(){
+//        
+//    }
         
 }
