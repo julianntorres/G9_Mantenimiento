@@ -52,27 +52,13 @@ public class GraphicBarThreadCondtion extends Thread{
         }
     }
     private void almacenarDatos(DefaultCategoryDataset datos, int[]labo_Operativo, int[]labo_Defectuoso, int []labo_Mantenimiento){
-        datos.setValue(labo_Operativo[0],"PC operativa","Laboratorio 1");
-        datos.setValue(labo_Defectuoso[0],"PC defectuosa","Laboratorio 1");
-        datos.setValue(labo_Mantenimiento[0],"PC en mantenimiento","Laboratorio 1");
-        datos.setValue(labo_Operativo[1],"PC operativa","Laboratorio 2");
-        datos.setValue(labo_Defectuoso[1],"PC defectuosa","Laboratorio 2");
-        datos.setValue(labo_Mantenimiento[1],"PC en mantenimiento","Laboratorio 2");
-        datos.setValue(labo_Operativo[2],"PC operativa","Laboratorio 3");
-        datos.setValue(labo_Defectuoso[2],"PC defectuosa","Laboratorio 3");
-        datos.setValue(labo_Mantenimiento[2],"PC en mantenimiento","Laboratorio 3");
-        datos.setValue(labo_Operativo[3],"PC operativa","Laboratorio 4");
-        datos.setValue(labo_Defectuoso[3],"PC defectuosa","Laboratorio 4");
-        datos.setValue(labo_Mantenimiento[3],"PC en mantenimiento","Laboratorio 4");
-        datos.setValue(labo_Operativo[4],"PC operativa","Laboratorio 5");
-        datos.setValue(labo_Defectuoso[4],"PC defectuosa","Laboratorio 5");
-        datos.setValue(labo_Mantenimiento[4],"PC en mantenimiento","Laboratorio 5");
-        datos.setValue(labo_Operativo[5],"PC operativa","Laboratorio 6");
-        datos.setValue(labo_Defectuoso[5],"PC defectuosa","Laboratorio 6");
-        datos.setValue(labo_Mantenimiento[5],"PC en mantenimiento","Laboratorio 6");
-        datos.setValue(labo_Operativo[6],"PC operativa","Laboratorio 7");
-        datos.setValue(labo_Defectuoso[6],"PC defectuosa","Laboratorio 7");
-        datos.setValue(labo_Mantenimiento[6],"PC en mantenimiento","Laboratorio 7");
+        
+        for (int i=0;i<7;i++){
+            String laboratorio="Laboratorio"+(i+1);
+            datos.setValue(labo_Operativo[i],"PC operativa",laboratorio);
+            datos.setValue(labo_Defectuoso[i],"PC defectuosa",laboratorio);
+            datos.setValue(labo_Mantenimiento[i],"PC en mantenimiento",laboratorio);
+        }
     }
     
     @Override
