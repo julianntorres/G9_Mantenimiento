@@ -9,7 +9,7 @@ public class ConnectionPool {
     private final String DB = "g5-ppc_db";
     private final String URL = "jdbc:mysql://localhost:3306/" + DB + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private final String USER = "root";
-    private final String PASS = "Root12345!";
+    private final String PASS = "root";
 
     private static ConnectionPool dataSource;
     private BasicDataSource basicDataSource = null;

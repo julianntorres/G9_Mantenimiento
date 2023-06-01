@@ -7,16 +7,19 @@ import Controller.GraficosCtr;
 import Controller.PrintReportCtr;
 import Controller.RegisterCtr;
 import Controller.ModificarCtr;
+import Controller.WatchDemon;
 import Controller.watchDemonAdmin;
 import Model.Admin;
 import Model.UserSession;
 import java.util.*;
 import java.text.SimpleDateFormat;
+import javax.swing.JLabel;
 
-public class admin_menu extends javax.swing.JFrame {
+public class admin_menu extends javax.swing.JFrame implements Menu{
 
     public Admin administrador = Model.Admin.administrador;
-    public watchDemonAdmin reloj = new watchDemonAdmin(this);
+    //public watchDemonAdmin reloj = new watchDemonAdmin(this);
+    public WatchDemon reloj = new WatchDemon(this);
     private UserSession session;
 
     /**
@@ -284,4 +287,9 @@ public class admin_menu extends javax.swing.JFrame {
     private javax.swing.JLabel name_admin;
     public javax.swing.JLabel relojLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public JLabel getRelojLabel() {
+        return this.relojLabel;
+    }
 }

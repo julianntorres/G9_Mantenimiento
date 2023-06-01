@@ -7,6 +7,7 @@ import Controller.PrintReportCtr;
 import Controller.RMI;
 import Controller.RegisterCtr;
 import Controller.UserReadFileCtr;
+import Controller.WatchDemon;
 import Controller.watchDemonUser;
 import Model.Admin;
 import Model.User;
@@ -15,11 +16,13 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.*;
 import java.text.SimpleDateFormat;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class user_menu extends javax.swing.JFrame {
+public class user_menu extends javax.swing.JFrame implements Menu{
 
-    public watchDemonUser reloj = new watchDemonUser(this);
+    //public watchDemonUser reloj = new watchDemonUser(this);
+    public WatchDemon reloj = new WatchDemon(this);
     public User usuario = Model.User.usuario;
     private UserSession session;
 
@@ -213,5 +216,10 @@ public class user_menu extends javax.swing.JFrame {
     private javax.swing.JLabel name_user;
     public javax.swing.JLabel relojLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public JLabel getRelojLabel() {
+        return this.relojLabel;
+    }
 
 }
