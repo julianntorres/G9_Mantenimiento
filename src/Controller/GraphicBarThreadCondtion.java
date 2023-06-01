@@ -86,39 +86,7 @@ public class GraphicBarThreadCondtion extends Thread{
         int[] labo_Mantenimiento= new int[7];
         
         asignarValores(labo_Operativo,labo_Defectuoso,labo_Mantenimiento);
-        /*for (int i=0;i<datos.size();i++){
-            int opcion =  Integer.parseInt(datos.get(i).get("id_lab").toString());
-            switch (datos.get(i).get("estado").toString()) {
-                        case "operativo":
-                            labo_Operativo[opcion-1]++;
-                            break;
-                        case "defectuosa":
-                            labo_Defectuoso[opcion-1]++;
-                            break;
-                        default:
-                            labo_Mantenimiento[opcion-1]++;
-                            break;
-                    }
-        }*/
-        
-        /*for (int i=0;i<datos.size();i++){
-            switch (datos.get(i).get("id_lab").toString()) {
-                case "1":
-                    switch (datos.get(i).get("estado").toString()) {
-                        case "operativo":
-                            labo_Operativo[0]++;
-                            break;
-                        case "defectuosa":
-                            labo_Defectuoso[0]++;
-                            break;
-                        default:
-                            labo_Mantenimiento[0]++;
-                            break;
-                    }
-         
-            
-
-        }*/
+       
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
       
         almacenarDatos(datos,labo_Operativo,labo_Defectuoso,labo_Mantenimiento);
