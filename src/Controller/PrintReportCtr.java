@@ -25,47 +25,52 @@ public class PrintReportCtr implements ActionListener {
         printnui.btnImprimir.addActionListener(this);
     }
 
+    // REFACTORIZACIÓN actionPerformed Method - LONG METHOD - ALEXANDER GONZALES
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.printnui.btnImprimir) {
             StringBuilder reportTypes = new StringBuilder();
             try {
-                int currentAdminID = session.getId(); // Obtener el ID del administrador desde la sesión
-
-                if (this.printnui.jCheckBox1.isSelected()) {
-                    reportTypes.append("1 ");
-                    WriterThread hilo1 = new WriterThread("1");
-                    hilo1.start();
-                }
-                if (this.printnui.jCheckBox2.isSelected()) {
-                    reportTypes.append("2 ");
-                    WriterThread hilo2 = new WriterThread("2");
-                    hilo2.start();
-                }
-                if (this.printnui.jCheckBox3.isSelected()) {
-                    reportTypes.append("3 ");
-                    WriterThread hilo3 = new WriterThread("3");
-                    hilo3.start();
-                }
-                if (this.printnui.jCheckBox4.isSelected()) {
-                    reportTypes.append("4 ");
-                    WriterThread hilo4 = new WriterThread("4");
-                    hilo4.start();
-                }
-                if (this.printnui.jCheckBox5.isSelected()) {
-                    reportTypes.append("5 ");
-                    WriterThread hilo5 = new WriterThread("5");
-                    hilo5.start();
-                }
-
-                String sqlAudit = String.format("INSERT INTO `audit_admin`(`id_admin`, `description`) VALUES ('%d','%s')",
-                        currentAdminID, "Impresión de reporte: " + reportTypes.toString());
-                new ConnectionPool().makeUpdate(sqlAudit);
+                int currentAdminID = getCurrentAdminID();
+                processSelectedReportTypes(reportTypes);
+                logAuditEvent(currentAdminID, reportTypes.toString());
             } catch (SQLException ex) {
-                System.out.println(ex);
-                JOptionPane.showMessageDialog(null, "Ocurrio un error al generar el reporte"
-                    + ", intente nuevamente", "Mensaje del sistema", 0);
+                handleReportGenerationError(ex);
             }
         }
     }
+
+    private int getCurrentAdminID() {
+        return session.getId();
+    }
+
+    private void processSelectedReportTypes(StringBuilder reportTypes) {
+        if (this.printnui.jCheckBox1.isSelected()) {
+            reportTypes.append("1 ");
+            generateReport("1");
+        }
+        if (this.printnui.jCheckBox2.isSelected()) {
+            reportTypes.append("2 ");
+            generateReport("2");
+        }
+
+    }
+
+    private void generateReport(String reportType) {
+        WriterThread writerThread = new WriterThread(reportType);
+        writerThread.start();
+    }
+
+    private void logAuditEvent(int adminID, String reportTypes) throws SQLException {
+        String sqlAudit = String.format("INSERT INTO `audit_admin`(`id_admin`, `description`) VALUES ('%d','%s')",
+                adminID, "Impresión de reporte: " + reportTypes);
+        new ConnectionPool().makeUpdate(sqlAudit);
+    }
+
+    private void handleReportGenerationError(SQLException ex) {
+        System.out.println(ex);
+        JOptionPane.showMessageDialog(null, "Ocurrió un error al generar el reporte, intente nuevamente",
+                "Mensaje del sistema", 0);
+    }
+    
 }
